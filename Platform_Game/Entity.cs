@@ -41,7 +41,6 @@ namespace Platform_Game
             this.IsGoingLeft = false;
             this.IsGoingRight = false;
             this.IsFacingLeft = false;
-            this.Kills = 0;
             IdGenerator++;
         }
         public Entity(string aNickName,int aLevel, Size aSize, Location aLocation) : base(aSize, aLocation)
@@ -177,7 +176,7 @@ namespace Platform_Game
 
         public bool IsMidAir()
         {
-            foreach (Platform p in Settings.CurrentMap)
+            foreach (Platform p in Map.platforms)
             {
                 if (this.IsIntersecting(p))
                     return false;
@@ -189,7 +188,7 @@ namespace Platform_Game
             this.Location.Row += this.MyMomentum;
             if (this.MyMomentum < Settings.MaxMomentum)
                 this.MyMomentum += 1;
-            foreach (Platform p in Settings.CurrentMap)
+            foreach (Platform p in Map.platforms)
             {
                 if (this.IsIntersecting(p))
                 {

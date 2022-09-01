@@ -14,19 +14,16 @@ namespace Platform_Game
     {
         private Map myMap;
         private Character myCharacter1;
-        private Monster myMonster1;
         public Form1()
         {
             InitializeComponent();
             new Settings(pbCanvas.Size.Width, pbCanvas.Size.Height);
 
             myMap = new Map();
-            Settings.CurrentMap = myMap.platforms;
             myCharacter1 = new Character("rottem", Settings.CharacterSize, Settings.StartingLocation);
             gameTimer.Interval = 1000 / Settings.Speed; // Changing the game time to settings speed
             gameTimer.Tick += UpdateScreen; // linking a updateScreen function to the timer
             gameTimer.Start(); // starting the timer
-            myMonster1 = new Monster("1 ", Settings.CharacterSize, Settings.StartingLocation);
         }
 
         private void UpdateGraphics(object sender, PaintEventArgs e)
@@ -34,7 +31,6 @@ namespace Platform_Game
             Graphics canvas = e.Graphics; // create a new graphics class called canvas
             myMap.Draw(canvas);
             myCharacter1.Draw(canvas);
-            myMonster1.Draw(canvas);    
         }
         private void UpdateScreen(object sender, EventArgs e)
         {
@@ -46,6 +42,8 @@ namespace Platform_Game
             myMap.Move();
             myCharacter1.Move();
             pbCanvas.Invalidate(); // refresh the picture box and update the graphics on it
+            UpdateGameBar();
+
         }
 
         private void KeyIsDown(object sender, KeyEventArgs e)
@@ -77,14 +75,27 @@ namespace Platform_Game
 
         }
 
+        private void UpdateGameBar()
+        {
+            Character1Name.Text = myCharacter1.Name;
+            P1MpBar.Invalidate();
+            P1HpBar.Invalidate();
+            Kills1.Text = "" + myCharacter1.Kills;
+        }
         private void P1MpBar_Paint(object sender, PaintEventArgs e)
         {
-
+            e.Graphics.FillRectangle(Brushes.Blue, 0, 0,
+                (myCharacter1.Mp * P1MpBar.Width) / myCharacter1.MaxMp,
+                P1MpBar.Height);
+            MP1.Text = "" + myCharacter1.Mp + "/" + myCharacter1.MaxMp;
         }
 
         private void P1HpBar_Paint(object sender, PaintEventArgs e)
         {
-
+            e.Graphics.FillRectangle(Brushes.Red, 0, 0,
+               (myCharacter1.Hp * P1HpBar.Width) / myCharacter1.MaxHp,
+               P1HpBar.Height);
+            HP1.Text = "" + myCharacter1.Hp +"/" + myCharacter1.MaxHp;
         }
     }
 }

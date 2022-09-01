@@ -23,5 +23,11 @@ namespace Platform_Game
             Col = aCol;
         }
 
+        public Location(Location a)
+        { 
+            this.Col = a.Col;
+            this.Row = a.Row;
+        }
+
     }
 }

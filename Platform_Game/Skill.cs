@@ -28,5 +28,12 @@ namespace Platform_Game
                 return false;
             return true;   
         }
+
+        public bool IsHitting(GameObject a)
+        {
+            if (this.IsIntersecting(a))
+                return true;
+            return false;
+        }
     }
 }

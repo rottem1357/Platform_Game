@@ -13,7 +13,7 @@ namespace Platform_Game
 
         public Fire(GameObject aGameObject , bool aIsLeft) :
             base(new Location(),
-            Settings.FireRange,
+            120,
             aIsLeft)
         {
             Random random = new Random();   
@@ -59,6 +59,12 @@ namespace Platform_Game
                 c.X = this.Location.Col;
             }
         }
-
+        public void CheckAndExecuteHit(List<Monster> monsters)
+        { 
+            Random random = new Random();
+            foreach (Monster m in monsters)
+                if(this.IsHitting(m))
+                    m.TakeHit(random.Next(3, 10));
+        }
     }
 }

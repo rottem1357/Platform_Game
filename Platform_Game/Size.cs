@@ -21,7 +21,11 @@ namespace Platform_Game
             Width = aWidth;
             Height = aHeight;
         }
-
+        public Size(Size a)
+        { 
+            this.Width = a.Width;   
+            this.Height = a.Height; 
+        }
 
         public int GetMaxRadiusInside()
         {

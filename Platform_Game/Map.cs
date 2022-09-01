@@ -9,8 +9,8 @@ namespace Platform_Game
 {
     internal class Map
     {
-        public List<Platform> platforms;
-        public List<Monster> monsters;
+        public static List<Platform> platforms;
+        public static List<Monster> monsters;
         private Queue<Cloud> clouds;
         private Queue<Bird> birds;
         
@@ -26,18 +26,19 @@ namespace Platform_Game
                new Location(5 * (Settings.Height / 10), 0)));
             platforms.Add(new Platform(new Size(Settings.Width / 3, Settings.Height / 20),
              new Location(6 * (Settings.Height / 10),2 * (Settings.Width /3))));
+            platforms.Add(new Platform(new Size(Settings.Width / 3, Settings.Height / 20),
+            new Location(3 * (Settings.Height / 10),  Settings.Width / 3)));
             monsters = new List<Monster>();
         }
 
         public void AddMonster()
         { 
-            Random random = new Random();
-            this.monsters.Add(new Monster("Bill", Settings.CharacterSize,
-                new Location(random.Next(Settings.Width), Settings.Height / 2)));
+            monsters.Add(new Monster("Bill",new Size(Settings.CharacterSize.Width * 2 , Settings.CharacterSize.Height * 2),
+                new Location(Settings.Width /2, Settings.Height / 2)));
         }
         public void AddPlatform(Platform p)
         {
-            this.platforms.Add(p);
+            platforms.Add(p);
         }
 
         public void AddBird(Bird b)
@@ -77,12 +78,14 @@ namespace Platform_Game
 
         public void Draw(System.Drawing.Graphics canvas)
         { 
-            foreach (Platform p in this.platforms)
+            foreach (Platform p in platforms)
                 p.Draw(canvas);
             foreach (Bird b in this.birds)
                 b.Draw(canvas);
             foreach(Cloud c in this.clouds)
                 c.Draw(canvas);
+            foreach(Monster m in monsters)
+                m.Draw(canvas);
         }
 
         public void Move()
@@ -91,12 +94,30 @@ namespace Platform_Game
                 b.Move();
             foreach (Cloud c in this.clouds)
                 c.Move();
+            foreach (Monster m in monsters)
+                m.Move();
             if(birds.Count != 0)
                 if (birds.Peek().IsOutOfRightBound())
                     birds.Dequeue();
             if(clouds.Count != 0)
                 if(clouds.Peek().IsOutOfRightBound())
                     clouds.Dequeue();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>how many monsters have been updated</returns>
+        public static int UpdateMonsters()
+        {
+            int counter = 0;
+            for(int i = 0; i < monsters.Count; i++)
+                if(monsters[i].Hp <= 0)
+                {
+                    monsters.RemoveAt(i);
+                    counter++;
+                }
+            return counter;
         }
     }
 }
