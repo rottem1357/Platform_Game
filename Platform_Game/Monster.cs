@@ -15,8 +15,7 @@ namespace Platform_Game
 
         public Monster(string aNickName, Size aSize, Location aLocation) : base(aNickName,aSize, aLocation)
         {
-            Random random = new Random();
-            MySerialCode = random.Next(1,4);
+            MySerialCode = MyRandom.Next(1,4);
             myDesign = Image.FromFile("C:\\Users\\rotte\\OneDrive\\rottem\\dev\\Platform_Game\\images\\" + MySerialCode + ".jpg");
             this.ActionInterval = 0;
         }
@@ -29,13 +28,12 @@ namespace Platform_Game
 
         public override void Move()
         {
-            Random rand = new Random();
-            int k = rand.Next(0, 60);
+            int k = MyRandom.Next(0, 60);
 
 
             if (this.ActionInterval == 0)
             {
-                switch(k % 3)
+                switch(k % 5)
                 {
                     case 0:
                         this.IsGoingLeft = true;
@@ -62,5 +60,6 @@ namespace Platform_Game
             }
             this.MoveEntity();
         }
+
     }
 }

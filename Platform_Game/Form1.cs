@@ -18,8 +18,11 @@ namespace Platform_Game
         {
             InitializeComponent();
             new Settings(pbCanvas.Size.Width, pbCanvas.Size.Height);
+            new MyRandom();
+            
 
             myMap = new Map();
+
             myCharacter1 = new Character("rottem", Settings.CharacterSize, Settings.StartingLocation);
             gameTimer.Interval = 1000 / Settings.Speed; // Changing the game time to settings speed
             gameTimer.Tick += UpdateScreen; // linking a updateScreen function to the timer

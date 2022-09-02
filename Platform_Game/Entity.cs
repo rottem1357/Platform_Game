@@ -185,21 +185,24 @@ namespace Platform_Game
         }
         public void Descend()
         {
+            bool flag;
+            flag = IsMidAir();  
             this.Location.Row += this.MyMomentum;
             if (this.MyMomentum < Settings.MaxMomentum)
                 this.MyMomentum += 1;
-            foreach (Platform p in Map.platforms)
-            {
-                if (this.IsIntersecting(p))
+            
+            if (flag)
+                foreach (Platform p in Map.platforms)
                 {
-                    this.Location.Row = p.Location.Row - this.Size.Height;
-                    this.IsDecending = false;
-                    this.MyMomentum = 0;
-                    return;
+                    if (this.IsIntersecting(p))
+                    {
+                        this.Location.Row = p.Location.Row - this.Size.Height;
+                        this.IsDecending = false;
+                        this.MyMomentum = 0;
+                        return;
+                    }
                 }
-            }
         }
-
         public void Jump()
         {
             if (this.IsDecending || this.IsAscending)

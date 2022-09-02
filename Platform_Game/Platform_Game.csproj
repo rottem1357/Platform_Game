@@ -80,6 +80,7 @@
     <Compile Include="Map.cs" />
     <Compile Include="Monster.cs" />
     <Compile Include="MyCharacterDesign.cs" />
+    <Compile Include="MyRandom.cs" />
     <Compile Include="Platform.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

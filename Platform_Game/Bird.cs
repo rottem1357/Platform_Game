@@ -34,12 +34,11 @@ namespace Platform_Game
 
         public override void Move()
         {
-            Random random = new Random();   
             int k;
             this.Location.Col += 4;
             if (mUp)
             {
-                k = random.Next(Math.Max(mBase, mTop) / 2);
+                k = MyRandom.Next(Math.Max(mBase, mTop) / 2);
                 if (this.mBase - k < 0)
                 { 
                     this.mUp = false;
@@ -51,7 +50,7 @@ namespace Platform_Game
             }
             else
             {
-                k = random.Next(Math.Max(mBase, mTop));
+                k = MyRandom.Next(Math.Max(mBase, mTop));
                 if (this.mTop - k < 0)
                 {
                     this.mUp = true;
@@ -61,7 +60,7 @@ namespace Platform_Game
                 this.mBase += k;
                 this.mTop -= k;
             }
-            k = random.Next(0 ,7);
+            k = MyRandom.Next(0 ,7);
             this.Location.Row += k - 3;
 
         }

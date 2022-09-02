@@ -53,8 +53,7 @@ namespace Platform_Game
         public void RandomBirdGeneration()
         {
             int k;
-            Random random = new Random();
-            k = random.Next(Settings.RandonGenKey);
+            k = MyRandom.Next(Settings.RandonGenKey);
 
             if (k == 2)
                 birds.Enqueue(new Bird(new Size(30, 30), new Location(0, -30)));
@@ -63,8 +62,7 @@ namespace Platform_Game
         public void RandomCloudGeneration()
         {
             int k;
-            Random random = new Random();
-            k = random.Next(Settings.RandonGenKey);
+            k = MyRandom.Next(Settings.RandonGenKey);
 
             if (k == 1)
                 clouds.Enqueue(new Cloud(5, new Size(200, 100), new Location(0, -200)));

@@ -15,24 +15,23 @@ namespace Platform_Game
             base(new Location(),
             120,
             aIsLeft)
-        {
-            Random random = new Random();   
+        {   
             this.Speed = Settings.MovementPixels * 3;
             if (aIsLeft)
             {
                 this.Location.Col = aGameObject.Location.Col;
                 this.Location.Row = aGameObject.Location.Row;
                 this.c = new Circle(this.Location.Col,
-                    this.Location.Row + (random.Next(aGameObject.Size.Height / 2)),
-                    random.Next((aGameObject.Size.Height / 5), aGameObject.Size.Height / 4));
+                    this.Location.Row + (MyRandom.Next(aGameObject.Size.Height / 2)),
+                    MyRandom.Next((aGameObject.Size.Height / 5), aGameObject.Size.Height / 4));
             }
             else
             {
                 this.Location.Col = aGameObject.Location.Col + aGameObject.Size.Width;
                 this.Location.Row = aGameObject.Location.Row;
                 this.c = new Circle(this.Location.Col + aGameObject.Size.Width,
-                    this.Location.Row + (random.Next(aGameObject.Size.Height / 2)),
-                    random.Next((aGameObject.Size.Height / 5), aGameObject.Size.Height / 4));
+                    this.Location.Row + (MyRandom.Next(aGameObject.Size.Height / 2)),
+                    MyRandom.Next((aGameObject.Size.Height / 5), aGameObject.Size.Height / 4));
             }
             this.Size.Height = c.R;
             this.Size.Width = c.R;
@@ -61,10 +60,9 @@ namespace Platform_Game
         }
         public void CheckAndExecuteHit(List<Monster> monsters)
         { 
-            Random random = new Random();
             foreach (Monster m in monsters)
                 if(this.IsHitting(m))
-                    m.TakeHit(random.Next(3, 10));
+                    m.TakeHit(MyRandom.Next(3, 10));
         }
     }
 }
