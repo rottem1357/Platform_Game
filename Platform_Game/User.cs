@@ -1,4 +1,11 @@
-﻿using System;
+﻿/// <file>
+/// Authors: Rotem Dresler . ID: 209207398. 
+///          Izhak keidar . ID: 066016155.
+///          
+/// Date:    07/09/2022.
+/// </file>
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,8 +23,8 @@ namespace Platform_Game
         public string Password { get; set; }
         public string MainColorName { get; set; }
         public int Id { get; set; }
-        public int level { get; set; }
-        public int kills { get; set; }
+        public int Level { get; set; }
+        public int Kills { get; set; }
         public string NickName { get; set; }
 
         public User()
@@ -26,8 +33,8 @@ namespace Platform_Game
             this.Password = "";
             this.Id = 0;
             this.MainColorName = "Blue";
-            this.level = 1;
-            this.kills = 0;
+            this.Level = 1;
+            this.Kills = 0;
         }
         public User(SerializationInfo info, StreamingContext context)
         {
@@ -35,8 +42,8 @@ namespace Platform_Game
             this.Password = (string)info.GetValue("Password", typeof(string));
             this.MainColorName = (string)info.GetValue("MainColor", typeof(string));
             this.Id = (int)info.GetValue("ID", typeof(int));
-            this.kills = (int)info.GetValue("Kills", typeof(int));
-            this.level = (int)info.GetValue("Level", typeof(int));
+            this.Kills = (int)info.GetValue("Kills", typeof(int));
+            this.Level = (int)info.GetValue("Level", typeof(int));
             this.NickName = (string)info.GetValue("NickName", typeof(string));
         }
         public void GetObjectData(SerializationInfo info, StreamingContext context)
@@ -45,9 +52,9 @@ namespace Platform_Game
             info.AddValue("UserName", this.UserName);
             info.AddValue("Password", this.Password);
             info.AddValue("MainColor", this.MainColorName);
-            info.AddValue("Kills", this.kills);
+            info.AddValue("Kills", this.Kills);
             info.AddValue("NickName", this.NickName);
-            info.AddValue("level", this.level);
+            info.AddValue("level", this.Level);
         }
 
         public void GenerateNewId()
@@ -100,8 +107,8 @@ namespace Platform_Game
 
         public void UpdateProgression(int aLevel, int aKills)
         { 
-            this.level = aLevel;
-            this.kills = aKills;
+            this.Level = aLevel;
+            this.Kills = aKills;
         }
     }
 }

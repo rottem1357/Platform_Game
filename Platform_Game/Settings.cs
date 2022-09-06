@@ -1,4 +1,11 @@
-﻿using System;
+﻿/// <file>
+/// Authors: Rotem Dresler . ID: 209207398. 
+///          Izhak keidar . ID: 066016155.
+///          
+/// Date:    07/09/2022.
+/// </file>
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,25 +16,17 @@ namespace Platform_Game
 {
     internal class Settings
     {
+        public static Size CharacterSize { get; set; }
+        public static Location StartingLocation { get; set; }
+        public static int MaxHp { get; set; }
+        public static int MaxMp { get; set; }
+        public static int MaxMomentum { get; set; }
         public static int RandonGenKey { get; set; }
         public static int Width{ get; set; }
         public static int Height{ get; set; }
-
-        public static int Speed{ get; set; }
-
-        public static int MaxHp { get; set; }
-        public static int MaxMp { get; set; }
-
-        public static Size CharacterSize { get; set; }
-
-        public static Location StartingLocation { get; set; }
-
-        public static int MaxMomentum { get; set; }
-        
+        public static int Speed{ get; set; } // determines game speed
         public static int MovementPixels { get; set; }
-
         public static int HealingPoints { get; set; }
-
         public static Font NickNameFont { get; set; }
 
         public Settings(int aWidth, int aHeight)

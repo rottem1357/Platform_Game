@@ -81,7 +81,6 @@
             this.Character1Name.Size = new System.Drawing.Size(41, 20);
             this.Character1Name.TabIndex = 3;
             this.Character1Name.Text = "TBD";
-            this.Character1Name.Click += new System.EventHandler(this.label3_Click);
             // 
             // panel1
             // 
@@ -195,7 +194,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(1200, 36);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // exitToolStripMenuItem
             // 
@@ -211,21 +209,21 @@
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
             this.saveToolStripMenuItem.Text = "Save";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem1
             // 
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
             this.exitToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
             this.exitToolStripMenuItem1.Text = "Exit";
-            this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
+            this.exitToolStripMenuItem1.Click += new System.EventHandler(this.ExitToolStripMenuItem1_Click);
             // 
             // homePageToolStripMenuItem
             // 
             this.homePageToolStripMenuItem.Name = "homePageToolStripMenuItem";
             this.homePageToolStripMenuItem.Size = new System.Drawing.Size(122, 29);
             this.homePageToolStripMenuItem.Text = "Home page";
-            this.homePageToolStripMenuItem.Click += new System.EventHandler(this.homePageToolStripMenuItem_Click);
+            this.homePageToolStripMenuItem.Click += new System.EventHandler(this.HomePageToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -237,8 +235,6 @@
             this.Controls.Add(this.menuStrip1);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyIsDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KeyIsUp);
             this.panel1.ResumeLayout(false);

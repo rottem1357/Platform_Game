@@ -1,4 +1,11 @@
-﻿using System;
+﻿/// <file>
+/// Authors: Rotem Dresler . ID: 209207398. 
+///          Izhak keidar . ID: 066016155.
+///          
+/// Date:    07/09/2022.
+/// </file>
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,10 +29,10 @@ namespace Platform_Game
 
         public override void Draw(Graphics canvas)
         {
-            canvas.DrawLine(Pens.Black , this.Location.Col,
+            canvas.DrawLine(Pens.Black, this.Location.Col,
                 this.Location.Row + this.mTop,
                 this.Location.Col + this.Size.Width / 2,
-                this.Location.Row +mBase);
+                this.Location.Row + mBase);
             canvas.DrawLine(Pens.Black, this.Location.Col + this.Size.Width / 2,
                 this.Location.Row + mBase,
                this.Location.Col + this.Size.Width,
@@ -40,7 +47,7 @@ namespace Platform_Game
             {
                 k = MyRandom.Next(Math.Max(mBase, mTop) / 2);
                 if (this.mBase - k < 0)
-                { 
+                {
                     this.mUp = false;
                     return;
                 }
@@ -60,7 +67,7 @@ namespace Platform_Game
                 this.mBase += k;
                 this.mTop -= k;
             }
-            k = MyRandom.Next(0 ,7);
+            k = MyRandom.Next(0, 7);
             this.Location.Row += k - 3;
 
         }

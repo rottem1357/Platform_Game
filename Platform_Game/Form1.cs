@@ -51,16 +51,14 @@ namespace Platform_Game
         {
             // this is the Timers update screen function. 
             // each tick will run this function
-            myMap.RandomCloudGeneration();
-            myMap.RandomBirdGeneration();
-            myMap.RandomMonsterGeneration();
+            myMap.RandomGen();
             myMap.Move();
             myCharacter1.Move();
-            pbCanvas.Invalidate(); // refresh the picture box and update the graphics on it
             UpdateGameBar();
-
+            if (!myCharacter1.IsAlive)
+                myCharacter1.Die();
+            pbCanvas.Invalidate(); // refresh the picture box and update the graphics on it
         }
-
         private void KeyIsDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Right)
@@ -76,20 +74,10 @@ namespace Platform_Game
         private void KeyIsUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Right)
-            {
                 myCharacter1.IsGoingRight = false;
-            }
             if (e.KeyCode == Keys.Left)
-            {
                 myCharacter1.IsGoingLeft = false;
-            }
         }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void UpdateGameBar()
         {
             Character1Name.Text = myCharacter1.Name;
@@ -110,30 +98,9 @@ namespace Platform_Game
             e.Graphics.FillRectangle(Brushes.Red, 0, 0,
                (myCharacter1.Hp * P1HpBar.Width) / myCharacter1.MaxHp,
                P1HpBar.Height);
-            HP1.Text = "" + myCharacter1.Hp +"/" + myCharacter1.MaxHp;
+            HP1.Text = "" + myCharacter1.Hp + "/" + myCharacter1.MaxHp;
         }
-
-        private void ButtonHomePage_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-           
-        }
-
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            
-        }
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (this.mId == 0)
                 MessageBox.Show("You are playing as guest");
@@ -144,20 +111,13 @@ namespace Platform_Game
             }
             
         }
-
-        private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void ExitToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-
-        private void homePageToolStripMenuItem_Click(object sender, EventArgs e)
+        private void HomePageToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void changeColorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

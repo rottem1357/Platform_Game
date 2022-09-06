@@ -1,4 +1,11 @@
-﻿using System;
+﻿/// <file>
+/// Authors: Rotem Dresler . ID: 209207398. 
+///          Izhak keidar . ID: 066016155.
+///          
+/// Date:    07/09/2022.
+/// </file>
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +18,6 @@ namespace Platform_Game
     {
         public Brush MyColor { get; set; }
         public GameObject MyCharacter { get; set; }
-
         private Eye MyEyeLeft { get; set; }
         private Eye MyEyeRight { get; set; }
 
@@ -26,7 +32,6 @@ namespace Platform_Game
             MyEyeLeft = new Eye(this, true);
             MyEyeRight = new Eye(this, false);
         }
-
         public override void Draw(Graphics canvas)
         {
             canvas.FillEllipse(MyColor,
@@ -37,7 +42,6 @@ namespace Platform_Game
             MyEyeLeft.Draw(canvas); 
             MyEyeRight.Draw(canvas);    
         }
-
         public override void Move()
         {
             this.Location.Row = MyCharacter.Location.Row;
@@ -45,7 +49,6 @@ namespace Platform_Game
             MyEyeLeft.Move();
             MyEyeRight.Move();
         }
-
         public void UpdateFaceDirection(bool aIsFacingLeft)
         {
             this.MyEyeLeft.IsFacingLeft = aIsFacingLeft;

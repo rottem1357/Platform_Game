@@ -1,4 +1,11 @@
-﻿using System;
+﻿/// <file>
+/// Authors: Rotem Dresler . ID: 209207398. 
+///          Izhak keidar . ID: 066016155.
+///          
+/// Date:    07/09/2022.
+/// </file>
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,6 +37,7 @@ namespace Platform_Game
             canvas.DrawRectangle(Pens.Black, this.Location.Col, this.Location.Row, this.Size.Width, this.Size.Height);
         }
 
+        // there are no moving platforms at this game.
         public override void Move()
         {
 

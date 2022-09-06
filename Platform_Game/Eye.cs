@@ -1,4 +1,11 @@
-﻿using System;
+﻿/// <file>
+/// Authors: Rotem Dresler . ID: 209207398. 
+///          Izhak keidar . ID: 066016155.
+///          
+/// Date:    07/09/2022.
+/// </file>
+
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -10,9 +17,8 @@ namespace Platform_Game
     internal class Eye : GameObject
     {
         public Head MyHead { get; set; }
-        private bool IsLeft { get; set; }
-
-        public bool IsFacingLeft { get; set; }
+        private bool IsLeft { get; set; } //is the left or right eye.
+        public bool IsFacingLeft { get; set; } // does the character face left or right.
         public Eye(Head aHead, bool aIsLeft) : base()
         { 
             this.MyHead = aHead;
@@ -27,7 +33,6 @@ namespace Platform_Game
 
             this.IsFacingLeft = false;
         }
-
         public override void Draw(Graphics canvas)
         {
             canvas.FillEllipse(Brushes.White,

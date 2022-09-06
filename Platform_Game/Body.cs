@@ -1,4 +1,11 @@
-﻿using System;
+﻿/// <file>
+/// Authors: Rotem Dresler . ID: 209207398. 
+///          Izhak keidar . ID: 066016155.
+///          
+/// Date:    07/09/2022.
+/// </file>
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,11 +16,11 @@ namespace Platform_Game
 {
     internal class Body : GameObject
     {
-        public Head MyHead {get; set;}
+        public Head MyHead { get; set; }
         private Brush MyColor { get; set; }
 
         public Body(Head aHead, Brush c) : base()
-        { 
+        {
             this.MyHead = aHead;
             this.Size.Width = MyHead.Size.Width / 3;
             this.Size.Height = MyHead.Size.Height;

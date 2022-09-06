@@ -1,4 +1,11 @@
-﻿using System;
+﻿/// <file>
+/// Authors: Rotem Dresler . ID: 209207398. 
+///          Izhak keidar . ID: 066016155.
+///          
+/// Date:    07/09/2022.
+/// </file>
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,15 +18,14 @@ namespace Platform_Game
     internal class Character : Entity
     {
         public int Kills { get; set; }
+        private int RecoveryInterval { get; set; }
+        private int HitInterval { get; set; }
         public bool IsAlive { get; set; }
         public string Name { get; set; }
         private MyCharacterDesign MyDesign { get; set; }
-        private int RecoveryInterval { get; set; }  
-
         private Queue<Fire> MyFire { get; set; }
-        private int HitInterval { get; set; }
         private Color MyColor { get; set; }
-       
+
         public Character(string aName, Size aSize, Location aLocation) : base(aName, aSize, aLocation)
         {
             this.Name = aName;
@@ -30,18 +36,18 @@ namespace Platform_Game
             this.IsAlive = true;
             this.HitInterval = 20;
             this.Kills = 0;
-            
+
         }
-        public Character(string aName, int aLevel,int aKills,Color aColor, Size aSize, Location aLocation) : base(aName, aSize, aLocation)
+        public Character(string aName, int aLevel, int aKills, Color aColor, Size aSize, Location aLocation) : base(aName, aSize, aLocation)
         {
             this.MyColor = aColor;
             this.Name = aName;
-            this.MyDesign = new MyCharacterDesign(this , this.MyColor);
+            this.MyDesign = new MyCharacterDesign(this, this.MyColor);
             this.MyFire = new Queue<Fire>();
             this.IsAlive = true;
             this.HitInterval = 20;
             this.Kills = aKills;
-            
+            this.Level = aLevel;
         }
         public override void Draw(Graphics canvas)
         {
@@ -52,8 +58,8 @@ namespace Platform_Game
         }
         public override void Move()
         {
-            this.MoveEntity();
-            MyDesign.Move();
+            this.MoveEntity(); //movement logic
+            MyDesign.Move(); // movement of the character drawing objects.
             this.MyDesign.MyHead.UpdateFaceDirection(this.IsFacingLeft);
 
             foreach (Fire fire in this.MyFire)
@@ -70,13 +76,14 @@ namespace Platform_Game
                     if (MyFire.Count == 0)
                         break;
                 }
-            Recover();
+
             if (this.IsHit())
             {
-                this.Hp -= MyRandom.Next(10);
+                this.Hp -= MyRandom.Next(20);
                 if (this.Hp <= 0)
                     this.IsAlive = false;
             }
+            Recover();
         }
 
         public bool IsHit()
@@ -108,6 +115,9 @@ namespace Platform_Game
             this.Mp--;
         }
 
+        /// <summary>
+        /// player that stands still recover a little bit hp and mp. 
+        /// </summary>
         public void Recover()
         {
             if (this.IsGoingLeft || this.IsGoingRight)
@@ -134,16 +144,22 @@ namespace Platform_Game
                 if (Mp > this.MaxMp)
                     this.Mp = this.MaxMp;
             }
-
         }
         public void AddKill(int k)
         {
-            this.Kills+= k;
+            this.Kills += k;
             if (Kills >= this.Level * 10)
             {
                 this.LevelUp();
                 this.Kills = 0;
             }
+        }
+        public void Die()
+        {
+            this.Kills = 0;
+            this.Hp = Settings.MaxHp;
+            this.Mp = Settings.MaxMp;
+            this.Location = Settings.StartingLocation;
         }
     }
 }

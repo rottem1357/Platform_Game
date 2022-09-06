@@ -1,4 +1,11 @@
-﻿using System;
+﻿/// <file>
+/// Authors: Rotem Dresler . ID: 209207398. 
+///          Izhak keidar . ID: 066016155.
+///          
+/// Date:    07/09/2022.
+/// </file>
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -67,7 +74,7 @@ namespace Platform_Game
             foreach (User u in MyUsers)
                 if (a.UserName == u.UserName)
                 {
-                    u.UpdateProgression(a.level, a.kills);
+                    u.UpdateProgression(a.Level, a.Kills);
                     return true;
                 }
             return false;                    
@@ -128,7 +135,7 @@ namespace Platform_Game
             foreach (User u in MyUsers)
             {
                 if (u.Id == aId)
-                    return u.level;
+                    return u.Level;
             }
             return 1;
         }
@@ -137,7 +144,7 @@ namespace Platform_Game
             foreach (User u in MyUsers)
             {
                 if (u.Id == aId)
-                    return u.kills;
+                    return u.Kills;
             }
             return 0;
         }

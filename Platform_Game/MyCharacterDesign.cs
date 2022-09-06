@@ -1,4 +1,11 @@
-﻿using System;
+﻿/// <file>
+/// Authors: Rotem Dresler . ID: 209207398. 
+///          Izhak keidar . ID: 066016155.
+///          
+/// Date:    07/09/2022.
+/// </file>
+
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -17,7 +24,6 @@ namespace Platform_Game
         public Arm MyArmRight { get; set; }
         public GameObject MyCharacter { get; set; }
         public Brush MyBrush { get; set; }
-
         public MyCharacterDesign(GameObject aCharacter, Color aColor)
         {
             MyCharacter = aCharacter;
@@ -29,7 +35,6 @@ namespace Platform_Game
             MyArmRight = new Arm(MyBody, false , Brushes.LightSalmon);
             MyBrush = new SolidBrush(aColor);
         }
-
         public override void Draw(Graphics canvas)
         {
             MyHead.Draw(canvas);

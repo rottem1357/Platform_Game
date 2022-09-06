@@ -1,4 +1,11 @@
-﻿using System;
+﻿/// <file>
+/// Authors: Rotem Dresler . ID: 209207398. 
+///          Izhak keidar . ID: 066016155.
+///          
+/// Date:    07/09/2022.
+/// </file>
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,14 +28,14 @@ namespace Platform_Game
             R = 0;
         }
 
-        public Circle(int x, int y , int r)
-        { 
-            this.X = x; 
+        public Circle(int x, int y, int r)
+        {
+            this.X = x;
             this.Y = y;
             this.R = r;
         }
 
-        public void Draw(Graphics canvas , Brush brush)
+        public void Draw(Graphics canvas, Brush brush)
         {
             canvas.FillEllipse(brush, this.X,
                   this.Y, this.R, this.R);

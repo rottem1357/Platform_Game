@@ -1,4 +1,11 @@
-﻿using System;
+﻿/// <file>
+/// Authors: Rotem Dresler . ID: 209207398. 
+///          Izhak keidar . ID: 066016155.
+///          
+/// Date:    07/09/2022.
+/// </file>
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,10 +14,13 @@ using System.Drawing;
 
 namespace Platform_Game
 {
+    /// <summary>
+    /// this abstract class is the base to every "living" object in the game.
+    /// both players and monsters will move by the logic which is defined here.
+    /// </summary>
     internal abstract class Entity : GameObject
     {
         private string NickName { get; set; }
-
         public int Hp { get; set; }
         public int MaxHp { get; set; }
         public int MaxMp { get; set; }
@@ -57,23 +67,25 @@ namespace Platform_Game
         {
             this.Level++;
         }
-
         public void TakeHit(int k)
         { 
             this.Hp -= k;   
         }
-
         public void Heal()
         {
             this.Hp += Settings.HealingPoints;
         }
-
         public bool IsDead()
         {
             if (this.Hp <= 0)
                 return true;
             return false;
         }
+        /// <summary>
+        /// drawing elemnents common to every entity.
+        /// </summary>
+        /// <param name="canvas"></param>
+        #region Draw addons
         public void DrawLevel(Graphics canvas)
         {
 
@@ -83,7 +95,6 @@ namespace Platform_Game
                 (float)(this.Location.Col),
                 (float)(this.Location.Row) + (float)(this.Size.Height) + (float)8) ;
         }
-
         public void DrawNickName(Graphics canvas)
         {
             canvas.DrawString(this.NickName,
@@ -92,7 +103,6 @@ namespace Platform_Game
                 (float)(this.Location.Col),
                 (float)(this.Location.Row) + (float)(this.Size.Height));
         }
-
         public void DrawHPBar(Graphics canvas)
         {
             canvas.FillRectangle(Brushes.Red,
@@ -105,15 +115,17 @@ namespace Platform_Game
                 this.Size.Width,
                 4);
         }
-
         public void DrawEntityLevel(Graphics canvas)
         { 
             DrawHPBar(canvas);
             DrawNickName(canvas);
             DrawLevel(canvas);  
         }
+        #endregion
 
-
+        /// <summary>
+        /// movement logic.
+        /// </summary>
         #region Movement
         public void MoveEntity()
         {
