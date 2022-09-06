@@ -18,25 +18,30 @@ namespace Platform_Game
 
         private Queue<Fire> MyFire { get; set; }
         private int HitInterval { get; set; }
+        private Color MyColor { get; set; }
        
         public Character(string aName, Size aSize, Location aLocation) : base(aName, aSize, aLocation)
         {
             this.Name = aName;
-            MyDesign = new MyCharacterDesign(this);
-            MyFire = new Queue<Fire>();
+            this.MyColor = Color.Blue;
+            this.MyDesign = new MyCharacterDesign(this, this.MyColor);
+            this.MyFire = new Queue<Fire>();
             this.RecoveryInterval = 0;
             this.IsAlive = true;
             this.HitInterval = 20;
             this.Kills = 0;
+            
         }
-        public Character(string aName, int aLevel,int aKills, Size aSize, Location aLocation) : base(aName, aSize, aLocation)
+        public Character(string aName, int aLevel,int aKills,Color aColor, Size aSize, Location aLocation) : base(aName, aSize, aLocation)
         {
+            this.MyColor = aColor;
             this.Name = aName;
-            MyDesign = new MyCharacterDesign(this);
-            MyFire = new Queue<Fire>();
+            this.MyDesign = new MyCharacterDesign(this , this.MyColor);
+            this.MyFire = new Queue<Fire>();
             this.IsAlive = true;
             this.HitInterval = 20;
             this.Kills = aKills;
+            
         }
         public override void Draw(Graphics canvas)
         {

@@ -15,6 +15,7 @@ namespace Platform_Game
         public HomePage()
         {
             InitializeComponent();
+            new Users();
         }
 
         private void HomePage_Load(object sender, EventArgs e)
@@ -24,21 +25,20 @@ namespace Platform_Game
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            LogIn logIn = new LogIn();
+            logIn.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             Form1 form1 = new Form1(0);
             form1.ShowDialog();
-            this.Close();
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             SignUp signUp = new SignUp();
             signUp.ShowDialog();
-            this.Close();
         }
     }
 }

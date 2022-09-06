@@ -37,16 +37,22 @@
             this.Kills1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.MP1 = new System.Windows.Forms.Label();
+            this.P1MpBar = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.HP1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.P1MpBar = new System.Windows.Forms.PictureBox();
             this.P1HpBar = new System.Windows.Forms.PictureBox();
             this.pbCanvas = new System.Windows.Forms.PictureBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.homePageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.P1MpBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.P1HpBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCanvas)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Name1
@@ -122,6 +128,15 @@
             this.MP1.TabIndex = 9;
             this.MP1.Text = "TBD";
             // 
+            // P1MpBar
+            // 
+            this.P1MpBar.Location = new System.Drawing.Point(8, 196);
+            this.P1MpBar.Name = "P1MpBar";
+            this.P1MpBar.Size = new System.Drawing.Size(255, 26);
+            this.P1MpBar.TabIndex = 8;
+            this.P1MpBar.TabStop = false;
+            this.P1MpBar.Paint += new System.Windows.Forms.PaintEventHandler(this.P1MpBar_Paint);
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -149,15 +164,6 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "HP";
             // 
-            // P1MpBar
-            // 
-            this.P1MpBar.Location = new System.Drawing.Point(8, 196);
-            this.P1MpBar.Name = "P1MpBar";
-            this.P1MpBar.Size = new System.Drawing.Size(255, 26);
-            this.P1MpBar.TabIndex = 8;
-            this.P1MpBar.TabStop = false;
-            this.P1MpBar.Paint += new System.Windows.Forms.PaintEventHandler(this.P1MpBar_Paint);
-            // 
             // P1HpBar
             // 
             this.P1HpBar.Location = new System.Drawing.Point(8, 118);
@@ -170,12 +176,56 @@
             // pbCanvas
             // 
             this.pbCanvas.BackColor = System.Drawing.Color.SkyBlue;
-            this.pbCanvas.Location = new System.Drawing.Point(0, 0);
+            this.pbCanvas.Location = new System.Drawing.Point(0, 36);
             this.pbCanvas.Name = "pbCanvas";
             this.pbCanvas.Size = new System.Drawing.Size(900, 800);
             this.pbCanvas.TabIndex = 0;
             this.pbCanvas.TabStop = false;
             this.pbCanvas.Paint += new System.Windows.Forms.PaintEventHandler(this.UpdateGraphics);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exitToolStripMenuItem,
+            this.homePageToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1200, 36);
+            this.menuStrip1.TabIndex = 5;
+            this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveToolStripMenuItem,
+            this.exitToolStripMenuItem1});
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(89, 29);
+            this.exitToolStripMenuItem.Text = "options";
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem1
+            // 
+            this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(270, 34);
+            this.exitToolStripMenuItem1.Text = "Exit";
+            this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
+            // 
+            // homePageToolStripMenuItem
+            // 
+            this.homePageToolStripMenuItem.Name = "homePageToolStripMenuItem";
+            this.homePageToolStripMenuItem.Size = new System.Drawing.Size(122, 29);
+            this.homePageToolStripMenuItem.Text = "Home page";
+            this.homePageToolStripMenuItem.Click += new System.EventHandler(this.homePageToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -184,6 +234,7 @@
             this.ClientSize = new System.Drawing.Size(1200, 900);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pbCanvas);
+            this.Controls.Add(this.menuStrip1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
@@ -195,7 +246,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.P1MpBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.P1HpBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCanvas)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -215,6 +269,11 @@
         private System.Windows.Forms.Label Kills1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label MP1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem homePageToolStripMenuItem;
     }
 }
 

@@ -86,6 +86,9 @@ namespace Platform_Game
                 m.Draw(canvas);
         }
 
+        /// <summary>
+        /// move all map objects
+        /// </summary>
         public void Move()
         {
             foreach (Bird b in this.birds)
@@ -117,6 +120,11 @@ namespace Platform_Game
                 }
             return counter;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>The lowest platform that exists</returns>
         public static Platform GetBasePlatform()
         {
             int currIndex = 0;

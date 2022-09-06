@@ -10,11 +10,11 @@ using System.IO;
 namespace Platform_Game
 {
     [Serializable()]
-    internal class User : ISerializable
+    public class User : ISerializable
     {
         public string UserName { get; set; }
         public string Password { get; set; }
-        public System.Drawing.Color MainColor { get; set; }
+        public string MainColorName { get; set; }
         public int Id { get; set; }
         public int level { get; set; }
         public int kills { get; set; }
@@ -25,7 +25,7 @@ namespace Platform_Game
             this.UserName = "";
             this.Password = "";
             this.Id = 0;
-            this.MainColor = System.Drawing.Color.Blue;
+            this.MainColorName = "Blue";
             this.level = 1;
             this.kills = 0;
         }
@@ -33,7 +33,7 @@ namespace Platform_Game
         {
             this.UserName = (string)info.GetValue("UserName", typeof(string));
             this.Password = (string)info.GetValue("Password", typeof(string));
-            this.MainColor = (System.Drawing.Color)info.GetValue("MainColor", typeof(System.Drawing.Color));
+            this.MainColorName = (string)info.GetValue("MainColor", typeof(string));
             this.Id = (int)info.GetValue("ID", typeof(int));
             this.kills = (int)info.GetValue("Kills", typeof(int));
             this.level = (int)info.GetValue("Level", typeof(int));
@@ -44,7 +44,7 @@ namespace Platform_Game
             info.AddValue("ID", this.Id);
             info.AddValue("UserName", this.UserName);
             info.AddValue("Password", this.Password);
-            info.AddValue("MainColor", this.MainColor);
+            info.AddValue("MainColor", this.MainColorName);
             info.AddValue("Kills", this.kills);
             info.AddValue("NickName", this.NickName);
             info.AddValue("level", this.level);
@@ -55,7 +55,7 @@ namespace Platform_Game
             int temp = 1;
             foreach(User user in Users.MyUsers)
             {
-                if(user.Id > temp)
+                if(user.Id >= temp)
                     temp = user.Id + 1;
             }
             this.Id = temp;

@@ -61,12 +61,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormSinglePlayer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormSinglePlayer.Designer.cs">
-      <DependentUpon>FormSinglePlayer.cs</DependentUpon>
-    </Compile>
     <Compile Include="GameObject.cs" />
     <Compile Include="Head.cs" />
     <Compile Include="HomePage.cs">
@@ -104,9 +98,6 @@
     <Compile Include="Users.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormSinglePlayer.resx">
-      <DependentUpon>FormSinglePlayer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HomePage.resx">
       <DependentUpon>HomePage.cs</DependentUpon>

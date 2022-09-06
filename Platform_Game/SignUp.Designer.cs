@@ -33,11 +33,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textUserName = new System.Windows.Forms.TextBox();
+            this.textPassword = new System.Windows.Forms.TextBox();
+            this.textNickName = new System.Windows.Forms.TextBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.button1 = new System.Windows.Forms.Button();
+            this.MyColor = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -89,41 +89,41 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "NickName:";
             // 
-            // textBox1
+            // textUserName
             // 
-            this.textBox1.Location = new System.Drawing.Point(323, 63);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(147, 26);
-            this.textBox1.TabIndex = 7;
+            this.textUserName.Location = new System.Drawing.Point(323, 63);
+            this.textUserName.Name = "textUserName";
+            this.textUserName.Size = new System.Drawing.Size(147, 26);
+            this.textUserName.TabIndex = 7;
             // 
-            // textBox2
+            // textPassword
             // 
-            this.textBox2.Location = new System.Drawing.Point(323, 121);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(147, 26);
-            this.textBox2.TabIndex = 8;
+            this.textPassword.Location = new System.Drawing.Point(323, 121);
+            this.textPassword.Name = "textPassword";
+            this.textPassword.Size = new System.Drawing.Size(147, 26);
+            this.textPassword.TabIndex = 8;
             // 
-            // textBox3
+            // textNickName
             // 
-            this.textBox3.Location = new System.Drawing.Point(323, 177);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(147, 26);
-            this.textBox3.TabIndex = 9;
+            this.textNickName.Location = new System.Drawing.Point(323, 177);
+            this.textNickName.Name = "textNickName";
+            this.textNickName.Size = new System.Drawing.Size(147, 26);
+            this.textNickName.TabIndex = 9;
             // 
             // colorDialog1
             // 
             this.colorDialog1.Color = System.Drawing.Color.MediumBlue;
             // 
-            // button1
+            // MyColor
             // 
-            this.button1.BackColor = System.Drawing.Color.MediumBlue;
-            this.button1.Location = new System.Drawing.Point(323, 228);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(87, 30);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "MyColor";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.MyColor.BackColor = System.Drawing.Color.MediumBlue;
+            this.MyColor.Location = new System.Drawing.Point(323, 228);
+            this.MyColor.Name = "MyColor";
+            this.MyColor.Size = new System.Drawing.Size(87, 30);
+            this.MyColor.TabIndex = 10;
+            this.MyColor.Text = "MyColor";
+            this.MyColor.UseVisualStyleBackColor = false;
+            this.MyColor.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -153,10 +153,10 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.MyColor);
+            this.Controls.Add(this.textNickName);
+            this.Controls.Add(this.textPassword);
+            this.Controls.Add(this.textUserName);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -177,11 +177,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textUserName;
+        private System.Windows.Forms.TextBox textPassword;
+        private System.Windows.Forms.TextBox textNickName;
         private System.Windows.Forms.ColorDialog colorDialog1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button MyColor;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.LinkLabel linkLabel1;
     }

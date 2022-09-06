@@ -14,8 +14,10 @@ namespace Platform_Game
     {
         private Map myMap;
         private Character myCharacter1;
-        public Form1(int id)
+        private int mId;
+        public Form1(int aId)
         {
+            this.mId = aId;
             InitializeComponent();
             new Settings(pbCanvas.Size.Width, pbCanvas.Size.Height);
             new MyRandom();
@@ -23,8 +25,17 @@ namespace Platform_Game
 
             myMap = new Map();
 
-            if(id == 0)
+            if(mId == 0)
                 myCharacter1 = new Character("guest", Settings.CharacterSize, Settings.StartingLocation);
+            else
+            {
+                myCharacter1 = new Character(Users.GetNickNameAtId(mId),
+                    Users.GetLevelAtId(mId),
+                    Users.GetKillsAtId(mId),
+                    Users.GetColorAtId(mId),
+                    Settings.CharacterSize, Settings.StartingLocation);
+            }
+
             gameTimer.Interval = 1000 / Settings.Speed; // Changing the game time to settings speed
             gameTimer.Tick += UpdateScreen; // linking a updateScreen function to the timer
             gameTimer.Start(); // starting the timer
@@ -104,9 +115,7 @@ namespace Platform_Game
 
         private void ButtonHomePage_Click(object sender, EventArgs e)
         {
-            HomePage homePage = new HomePage();
-            homePage.Show();
-            this.Close();
+
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -116,8 +125,39 @@ namespace Platform_Game
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (this.Owner != null)
-                this.Owner.Close();
+            
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.mId == 0)
+                MessageBox.Show("You are playing as guest");
+            else
+            {
+                Users.UpdateUser(mId, myCharacter1.Level, myCharacter1.Kills);
+                Users.UploadUsers();
+            }
+            
+        }
+
+        private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void homePageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void changeColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

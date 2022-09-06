@@ -18,16 +18,16 @@ namespace Platform_Game
         public GameObject MyCharacter { get; set; }
         public Brush MyBrush { get; set; }
 
-        public MyCharacterDesign(GameObject aCharacter)
+        public MyCharacterDesign(GameObject aCharacter, Color aColor)
         {
             MyCharacter = aCharacter;
             MyHead = new Head(MyCharacter , Brushes.LightSalmon);
-            MyBody = new Body(MyHead , Brushes.Blue);
+            MyBody = new Body(MyHead , new SolidBrush(aColor));
             MyLegLeft = new Leg(MyBody, true , Brushes.Black);
             MyLegRight = new Leg(MyBody, false , Brushes.Black);
             MyArmLeft = new Arm(MyBody, true , Brushes.LightSalmon);  
             MyArmRight = new Arm(MyBody, false , Brushes.LightSalmon);
-            MyBrush = Brushes.Red;
+            MyBrush = new SolidBrush(aColor);
         }
 
         public override void Draw(Graphics canvas)

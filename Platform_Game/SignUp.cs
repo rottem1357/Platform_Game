@@ -12,8 +12,11 @@ namespace Platform_Game
 {
     public partial class SignUp : Form
     {
+        User MyUser;
         public SignUp()
         {
+            MyUser = new User();
+            Users.DownloadUsers();
             InitializeComponent();
         }
 
@@ -21,13 +24,30 @@ namespace Platform_Game
         {
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
-                button1.BackColor = colorDialog1.Color;
+                MyColor.BackColor = colorDialog1.Color;
             }                
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            MyUser.UserName = textUserName.Text;
+            MyUser.Password = textPassword.Text;
+            MyUser.NickName = textNickName.Text;
+            MyUser.MainColorName = MyColor.BackColor.Name;
 
+            if(Users.IsExist(textUserName.Text) != 0)
+            {
+                MessageBox.Show("UserName is taken");
+                return;
+            }
+            if(MyUser.IsValidInput())
+            {
+                Users.AddUser(MyUser);
+                Users.UploadUsers();
+                MessageBox.Show("You have succesfully signed up");
+                return;
+            }
+            MessageBox.Show("Fill all form fields");
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
