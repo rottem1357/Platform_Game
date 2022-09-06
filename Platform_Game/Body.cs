@@ -10,7 +10,7 @@ namespace Platform_Game
     internal class Body : GameObject
     {
         public Head MyHead {get; set;}
-        public Brush MyColor { get; set; }
+        private Brush MyColor { get; set; }
 
         public Body(Head aHead, Brush c) : base()
         { 

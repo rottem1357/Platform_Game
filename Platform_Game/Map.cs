@@ -22,19 +22,19 @@ namespace Platform_Game
             platforms = new List<Platform>();   
             platforms.Add(new Platform(new Size(Settings.Width, Settings.Height / 20),
                 new Location(8 * (Settings.Height / 10), 0)));
-            platforms.Add(new Platform(new Size(Settings.Width / 3, Settings.Height / 20),
+            platforms.Add(new Platform(new Size( Settings.Width / 2, Settings.Height / 20),
                new Location(5 * (Settings.Height / 10), 0)));
-            platforms.Add(new Platform(new Size(Settings.Width / 3, Settings.Height / 20),
+            platforms.Add(new Platform(new Size(3 * Settings.Width / 7, Settings.Height / 20),
              new Location(6 * (Settings.Height / 10),2 * (Settings.Width /3))));
-            platforms.Add(new Platform(new Size(Settings.Width / 3, Settings.Height / 20),
-            new Location(3 * (Settings.Height / 10),  Settings.Width / 3)));
+           
             monsters = new List<Monster>();
         }
 
         public void AddMonster()
-        { 
-            monsters.Add(new Monster("Bill",new Size(Settings.CharacterSize.Width * 2 , Settings.CharacterSize.Height * 2),
-                new Location(Settings.Width /2, Settings.Height / 2)));
+        {
+            int k = MyRandom.Next(1,4);
+            monsters.Add(new Monster(k.ToString(),new Size(3 * Settings.CharacterSize.Width / 2 ,3 * Settings.CharacterSize.Height / 2),
+                new Location(MyRandom.Next(Settings.Width /2),MyRandom.Next(Settings.Height / 2))));
         }
         public void AddPlatform(Platform p)
         {
@@ -116,6 +116,14 @@ namespace Platform_Game
                     counter++;
                 }
             return counter;
+        }
+        public static Platform GetBasePlatform()
+        {
+            int currIndex = 0;
+            for (int index = 0; index < platforms.Count; index++)
+                if(platforms[index].Location.Row >= platforms[currIndex].Location.Row)
+                    currIndex = index;
+            return platforms[currIndex];
         }
     }
 }

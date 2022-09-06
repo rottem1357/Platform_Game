@@ -10,24 +10,33 @@ namespace Platform_Game
 {
     internal class Character : Entity
     {
-        
+        public int Kills { get; set; }
+        public bool IsAlive { get; set; }
         public string Name { get; set; }
-        public MyCharacterDesign MyDesign { get; set; }
-        public int RecoveryInterval { get; set; }
+        private MyCharacterDesign MyDesign { get; set; }
+        private int RecoveryInterval { get; set; }  
 
-        public Queue<Fire> MyFire { get; set; }
-        public Character(string aName, Size aSize , Location aLocation):base(aName , aSize, aLocation)
-        { 
-            this.Name = aName;
-            MyDesign = new MyCharacterDesign(this);
-            MyFire = new Queue<Fire>();
-            this.RecoveryInterval = 0;
-        }
-        public Character(string aName,int aLevel, Size aSize, Location aLocation) : base(aName, aSize, aLocation)
+        private Queue<Fire> MyFire { get; set; }
+        private int HitInterval { get; set; }
+       
+        public Character(string aName, Size aSize, Location aLocation) : base(aName, aSize, aLocation)
         {
             this.Name = aName;
             MyDesign = new MyCharacterDesign(this);
             MyFire = new Queue<Fire>();
+            this.RecoveryInterval = 0;
+            this.IsAlive = true;
+            this.HitInterval = 20;
+            this.Kills = 0;
+        }
+        public Character(string aName, int aLevel,int aKills, Size aSize, Location aLocation) : base(aName, aSize, aLocation)
+        {
+            this.Name = aName;
+            MyDesign = new MyCharacterDesign(this);
+            MyFire = new Queue<Fire>();
+            this.IsAlive = true;
+            this.HitInterval = 20;
+            this.Kills = aKills;
         }
         public override void Draw(Graphics canvas)
         {
@@ -46,9 +55,9 @@ namespace Platform_Game
             {
                 fire.Move();
                 fire.CheckAndExecuteHit(Map.monsters);
-                this.Kills+= Map.UpdateMonsters();
+                this.AddKill(Map.UpdateMonsters());
             }
-              
+
             if (MyFire.Count != 0)
                 while (MyFire.Peek().IsOutOfRange())
                 {
@@ -57,9 +66,34 @@ namespace Platform_Game
                         break;
                 }
             Recover();
+            if (this.IsHit())
+            {
+                this.Hp -= MyRandom.Next(10);
+                if (this.Hp <= 0)
+                    this.IsAlive = false;
+            }
         }
 
-        
+        public bool IsHit()
+        {
+            if (this.HitInterval > 0)
+            {
+                this.HitInterval--;
+                return false;
+            }
+
+            foreach (Monster m in Map.monsters)
+            {
+                if (this.IsIntersecting(m))
+                {
+                    this.HitInterval = 10;
+                    return true;
+                }
+
+
+            }
+            return false;
+        }
 
         public void Shoot()
         {
@@ -76,11 +110,11 @@ namespace Platform_Game
                 RecoveryInterval -= 2;
                 return;
             }
-            RecoveryInterval+= 10;
+            RecoveryInterval += 10;
             if (RecoveryInterval < 300)
                 return;
 
-            if(this.Hp < this.MaxHp)
+            if (this.Hp < this.MaxHp)
             {
                 RecoveryInterval = 0;
                 this.Hp += 10;
@@ -92,10 +126,19 @@ namespace Platform_Game
             {
                 RecoveryInterval = 0;
                 this.Mp += 20;
-                if(Mp > this.MaxMp)
+                if (Mp > this.MaxMp)
                     this.Mp = this.MaxMp;
             }
-               
+
+        }
+        public void AddKill(int k)
+        {
+            this.Kills+= k;
+            if (Kills >= this.Level * 10)
+            {
+                this.LevelUp();
+                this.Kills = 0;
+            }
         }
     }
 }

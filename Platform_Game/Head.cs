@@ -12,8 +12,8 @@ namespace Platform_Game
         public Brush MyColor { get; set; }
         public GameObject MyCharacter { get; set; }
 
-        public Eye MyEyeLeft { get; set; }
-        public Eye MyEyeRight { get; set; }
+        private Eye MyEyeLeft { get; set; }
+        private Eye MyEyeRight { get; set; }
 
         public Head(GameObject aCharacter, Brush c) : base()
         {

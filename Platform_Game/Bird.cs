@@ -9,8 +9,8 @@ namespace Platform_Game
 {
     internal class Bird : GameObject
     {
-        public int mBase;
-        public int mTop;
+        private int mBase;
+        private int mTop;
         private bool mUp;
 
         public Bird(Size aSize, Location aLocation) : base(aSize, aLocation)

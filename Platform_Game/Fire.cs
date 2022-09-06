@@ -9,7 +9,7 @@ namespace Platform_Game
 {
     internal class Fire : Skill
     {
-        public Circle c { get; set; }
+        private Circle c { get; set; }
 
         public Fire(GameObject aGameObject , bool aIsLeft) :
             base(new Location(),

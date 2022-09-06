@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.pbCanvas = new System.Windows.Forms.PictureBox();
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
             this.Name1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,26 +37,17 @@
             this.Kills1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.MP1 = new System.Windows.Forms.Label();
-            this.P1MpBar = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.HP1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.P1MpBar = new System.Windows.Forms.PictureBox();
             this.P1HpBar = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCanvas)).BeginInit();
+            this.pbCanvas = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.P1MpBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.P1HpBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCanvas)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pbCanvas
-            // 
-            this.pbCanvas.BackColor = System.Drawing.Color.SkyBlue;
-            this.pbCanvas.Location = new System.Drawing.Point(0, 0);
-            this.pbCanvas.Name = "pbCanvas";
-            this.pbCanvas.Size = new System.Drawing.Size(900, 800);
-            this.pbCanvas.TabIndex = 0;
-            this.pbCanvas.TabStop = false;
-            this.pbCanvas.Paint += new System.Windows.Forms.PaintEventHandler(this.UpdateGraphics);
             // 
             // Name1
             // 
@@ -132,15 +122,6 @@
             this.MP1.TabIndex = 9;
             this.MP1.Text = "TBD";
             // 
-            // P1MpBar
-            // 
-            this.P1MpBar.Location = new System.Drawing.Point(8, 196);
-            this.P1MpBar.Name = "P1MpBar";
-            this.P1MpBar.Size = new System.Drawing.Size(255, 26);
-            this.P1MpBar.TabIndex = 8;
-            this.P1MpBar.TabStop = false;
-            this.P1MpBar.Paint += new System.Windows.Forms.PaintEventHandler(this.P1MpBar_Paint);
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -168,6 +149,15 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "HP";
             // 
+            // P1MpBar
+            // 
+            this.P1MpBar.Location = new System.Drawing.Point(8, 196);
+            this.P1MpBar.Name = "P1MpBar";
+            this.P1MpBar.Size = new System.Drawing.Size(255, 26);
+            this.P1MpBar.TabIndex = 8;
+            this.P1MpBar.TabStop = false;
+            this.P1MpBar.Paint += new System.Windows.Forms.PaintEventHandler(this.P1MpBar_Paint);
+            // 
             // P1HpBar
             // 
             this.P1HpBar.Location = new System.Drawing.Point(8, 118);
@@ -176,6 +166,16 @@
             this.P1HpBar.TabIndex = 4;
             this.P1HpBar.TabStop = false;
             this.P1HpBar.Paint += new System.Windows.Forms.PaintEventHandler(this.P1HpBar_Paint);
+            // 
+            // pbCanvas
+            // 
+            this.pbCanvas.BackColor = System.Drawing.Color.SkyBlue;
+            this.pbCanvas.Location = new System.Drawing.Point(0, 0);
+            this.pbCanvas.Name = "pbCanvas";
+            this.pbCanvas.Size = new System.Drawing.Size(900, 800);
+            this.pbCanvas.TabIndex = 0;
+            this.pbCanvas.TabStop = false;
+            this.pbCanvas.Paint += new System.Windows.Forms.PaintEventHandler(this.UpdateGraphics);
             // 
             // Form1
             // 
@@ -186,13 +186,15 @@
             this.Controls.Add(this.pbCanvas);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyIsDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.KeyIsUp);
-            ((System.ComponentModel.ISupportInitialize)(this.pbCanvas)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.P1MpBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.P1HpBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCanvas)).EndInit();
             this.ResumeLayout(false);
 
         }

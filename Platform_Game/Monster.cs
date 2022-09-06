@@ -15,7 +15,7 @@ namespace Platform_Game
 
         public Monster(string aNickName, Size aSize, Location aLocation) : base(aNickName,aSize, aLocation)
         {
-            MySerialCode = MyRandom.Next(1,4);
+            MySerialCode = int.Parse(aNickName);
             myDesign = Image.FromFile("C:\\Users\\rotte\\OneDrive\\rottem\\dev\\Platform_Game\\images\\" + MySerialCode + ".jpg");
             this.ActionInterval = 0;
         }

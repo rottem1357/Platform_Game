@@ -10,18 +10,11 @@ using System.Windows.Forms;
 
 namespace Platform_Game
 {
-    public partial class FormSinglePlayer : Form
+    public partial class LogIn : Form
     {
-        public FormSinglePlayer()
+        public LogIn()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            HomePage homePage = new HomePage();
-            homePage.Show();
         }
     }
 }

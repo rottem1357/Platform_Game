@@ -10,18 +10,31 @@ using System.Windows.Forms;
 
 namespace Platform_Game
 {
-    public partial class FormSinglePlayer : Form
+    public partial class SignUp : Form
     {
-        public FormSinglePlayer()
+        public SignUp()
         {
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                button1.BackColor = colorDialog1.Color;
+            }                
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
             HomePage homePage = new HomePage();
             homePage.Show();
+            this.Close();
         }
     }
 }

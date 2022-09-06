@@ -10,8 +10,8 @@ namespace Platform_Game
     internal class Arm : GameObject
     {
         public Body MyBody { get; set; }
-        public bool IsLeft { get; set; }
-        public Brush MyColor { get; set; }
+        private bool IsLeft { get; set; }
+        private Brush MyColor { get; set; }
 
         public Arm(Body aBody, bool aIsLeft, Brush c) : base()
         {

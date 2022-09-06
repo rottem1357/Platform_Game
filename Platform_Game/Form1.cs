@@ -14,7 +14,7 @@ namespace Platform_Game
     {
         private Map myMap;
         private Character myCharacter1;
-        public Form1()
+        public Form1(int id)
         {
             InitializeComponent();
             new Settings(pbCanvas.Size.Width, pbCanvas.Size.Height);
@@ -23,7 +23,8 @@ namespace Platform_Game
 
             myMap = new Map();
 
-            myCharacter1 = new Character("rottem", Settings.CharacterSize, Settings.StartingLocation);
+            if(id == 0)
+                myCharacter1 = new Character("guest", Settings.CharacterSize, Settings.StartingLocation);
             gameTimer.Interval = 1000 / Settings.Speed; // Changing the game time to settings speed
             gameTimer.Tick += UpdateScreen; // linking a updateScreen function to the timer
             gameTimer.Start(); // starting the timer
@@ -83,7 +84,7 @@ namespace Platform_Game
             Character1Name.Text = myCharacter1.Name;
             P1MpBar.Invalidate();
             P1HpBar.Invalidate();
-            Kills1.Text = "" + myCharacter1.Kills;
+            Kills1.Text = "" + myCharacter1.Kills + " / " + myCharacter1.Level * 10;
         }
         private void P1MpBar_Paint(object sender, PaintEventArgs e)
         {
@@ -99,6 +100,24 @@ namespace Platform_Game
                (myCharacter1.Hp * P1HpBar.Width) / myCharacter1.MaxHp,
                P1HpBar.Height);
             HP1.Text = "" + myCharacter1.Hp +"/" + myCharacter1.MaxHp;
+        }
+
+        private void ButtonHomePage_Click(object sender, EventArgs e)
+        {
+            HomePage homePage = new HomePage();
+            homePage.Show();
+            this.Close();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+           
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (this.Owner != null)
+                this.Owner.Close();
         }
     }
 }

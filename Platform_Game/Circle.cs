@@ -9,9 +9,8 @@ namespace Platform_Game
 {
     internal class Circle
     {
-        public int X { get; set; } 
-        public int Y { get; set; } 
-
+        public int X { get; set; }
+        public int Y { get; set; }
         public int R { get; set; }
 
         public Circle()

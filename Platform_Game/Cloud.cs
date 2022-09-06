@@ -17,35 +17,34 @@ namespace Platform_Game
 
         public Cloud(int aCount,Size aSize, Location aLocation) : base(aSize, aLocation)
         {
-            Random random = new Random();
             Circle c;
             mParts = new List<Circle>();
             int x, y, r;
             
             for (int index = 0; index < aCount; index++)
             {
-                r = random.Next(2 * (aSize.GetMaxRadiusInside() / 3), 3 * (aSize.GetMaxRadiusInside() / 4));
+                r = MyRandom.Next(2 * (aSize.GetMaxRadiusInside() / 3), 3 * (aSize.GetMaxRadiusInside() / 4));
                 switch (index)
                 {
                     case 0:
                         x = 0;
-                        y = random.Next(0, aSize.Height - r);
+                        y = MyRandom.Next(0, aSize.Height - r);
                         break;
                     case 1:
                         y = 0;
-                        x = random.Next(0, aSize.Width - r);
+                        x = MyRandom.Next(0, aSize.Width - r);
                         break;
                     case 2:
                         x = aSize.Width - r;
-                        y = random.Next(0, aSize.Height - r);
+                        y = MyRandom.Next(0, aSize.Height - r);
                         break;
                     case 3:
                         y = aSize.Height - r;
-                        x = random.Next(0, aSize.Width - r);
+                        x = MyRandom.Next(0, aSize.Width - r);
                         break;
                     default:
-                        x = random.Next(0, aSize.Width - r);
-                        y = random.Next(0, aSize.Height - r);
+                        x = MyRandom.Next(0, aSize.Width - r);
+                        y = MyRandom.Next(0, aSize.Height - r);
                         break;
                 }
                 c = new Circle(x,y,r);

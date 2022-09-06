@@ -10,7 +10,7 @@ namespace Platform_Game
     internal class Eye : GameObject
     {
         public Head MyHead { get; set; }
-        public bool IsLeft { get; set; }
+        private bool IsLeft { get; set; }
 
         public bool IsFacingLeft { get; set; }
         public Eye(Head aHead, bool aIsLeft) : base()

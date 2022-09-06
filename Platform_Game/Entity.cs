@@ -9,16 +9,13 @@ namespace Platform_Game
 {
     internal abstract class Entity : GameObject
     {
-        protected static int IdGenerator { get; set; }
-        public int Id { get; }
-        public string NickName { get; set; }
+        private string NickName { get; set; }
+
         public int Hp { get; set; }
-      
         public int MaxHp { get; set; }
         public int MaxMp { get; set; }
         public int Mp { get; set; }
         public int Level { get; set; }
-        public int Kills { get; set; }
         public int MyMomentum { get; set; }
         public bool IsDecending { get; set; }
         public bool IsAscending { get; set; }
@@ -26,14 +23,12 @@ namespace Platform_Game
         public bool IsGoingRight { get; set; }
         public bool IsFacingLeft { get; set; }
         public Entity(string aNickName , Size aSize, Location aLocation):base(aSize,aLocation)
-        { 
-            IdGenerator = 0;
+        {
             this.NickName = aNickName;
             this.MaxHp = Settings.MaxHp;
             this.MaxMp = Settings.MaxMp;
             this.Hp = this.MaxHp;
             this.Mp = this.MaxMp;
-            this.Id = IdGenerator;
             this.Level = 1;
             this.MyMomentum = 0;
             this.IsDecending = true;
@@ -41,17 +36,14 @@ namespace Platform_Game
             this.IsGoingLeft = false;
             this.IsGoingRight = false;
             this.IsFacingLeft = false;
-            IdGenerator++;
         }
         public Entity(string aNickName,int aLevel, Size aSize, Location aLocation) : base(aSize, aLocation)
         {
-            IdGenerator = 0;
             this.NickName = aNickName;
             this.MaxHp = Settings.MaxHp;
             this.MaxMp = Settings.MaxMp;
             this.Hp = this.MaxHp;
             this.Mp = this.MaxMp;
-            this.Id = IdGenerator;
             this.Level = aLevel;
             this.MyMomentum = 0;
             this.IsDecending = true;
@@ -59,8 +51,6 @@ namespace Platform_Game
             this.IsGoingLeft = false;
             this.IsGoingRight = false;
             this.IsFacingLeft = false;
-            this.Kills = 0;
-            IdGenerator++;
         }
 
         public void LevelUp()
@@ -84,11 +74,6 @@ namespace Platform_Game
                 return true;
             return false;
         }
-        public void AddKill()
-        {
-            this.Kills++;
-        }
-
         public void DrawLevel(Graphics canvas)
         {
 
@@ -186,11 +171,21 @@ namespace Platform_Game
         public void Descend()
         {
             bool flag;
+            Platform PlatformBase = Map.GetBasePlatform();
             flag = IsMidAir();  
             this.Location.Row += this.MyMomentum;
             if (this.MyMomentum < Settings.MaxMomentum)
                 this.MyMomentum += 1;
-            
+
+
+            if(this.Location.Row + this.Size.Height >= PlatformBase.Location.Row)
+            {
+                this.Location.Row = PlatformBase.Location.Row - this.Size.Height;
+                this.IsDecending = false;
+                this.MyMomentum = 0;
+                return;
+            }
+
             if (flag)
                 foreach (Platform p in Map.platforms)
                 {
