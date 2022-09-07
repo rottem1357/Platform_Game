@@ -25,6 +25,7 @@ namespace Platform_Game
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 MyColor.BackColor = colorDialog1.Color;
+                MyColor.Text = MyColor.BackColor.Name;
             }                
         }
 
@@ -52,8 +53,6 @@ namespace Platform_Game
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            HomePage homePage = new HomePage();
-            homePage.Show();
             this.Close();
         }
     }

@@ -29,6 +29,7 @@ namespace Platform_Game
         public static int HealingPoints { get; set; }
         public static Font NickNameFont { get; set; }
 
+
         public Settings(int aWidth, int aHeight)
         {
             Width = aWidth;

@@ -17,12 +17,12 @@ namespace Platform_Game
         private int mId;
         public Form1(int aId)
         {
-            this.mId = aId;
             InitializeComponent();
+            this.mId = aId;
+
             new Settings(pbCanvas.Size.Width, pbCanvas.Size.Height);
             new MyRandom();
             
-
             myMap = new Map();
 
             if(mId == 0)
@@ -35,7 +35,6 @@ namespace Platform_Game
                     Users.GetColorAtId(mId),
                     Settings.CharacterSize, Settings.StartingLocation);
             }
-
             gameTimer.Interval = 1000 / Settings.Speed; // Changing the game time to settings speed
             gameTimer.Tick += UpdateScreen; // linking a updateScreen function to the timer
             gameTimer.Start(); // starting the timer
@@ -57,6 +56,7 @@ namespace Platform_Game
             UpdateGameBar();
             if (!myCharacter1.IsAlive)
                 myCharacter1.Die();
+                
             pbCanvas.Invalidate(); // refresh the picture box and update the graphics on it
         }
         private void KeyIsDown(object sender, KeyEventArgs e)

@@ -160,6 +160,7 @@ namespace Platform_Game
             this.Hp = Settings.MaxHp;
             this.Mp = Settings.MaxMp;
             this.Location = Settings.StartingLocation;
+            this.IsAlive = true;
         }
     }
 }

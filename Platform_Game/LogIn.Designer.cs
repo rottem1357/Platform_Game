@@ -34,6 +34,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textUserName = new System.Windows.Forms.TextBox();
             this.textPassword = new System.Windows.Forms.TextBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,7 +50,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(309, 288);
+            this.button1.Location = new System.Drawing.Point(309, 258);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(159, 95);
             this.button1.TabIndex = 3;
@@ -89,11 +90,23 @@
             this.textPassword.Size = new System.Drawing.Size(159, 26);
             this.textPassword.TabIndex = 7;
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(341, 375);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(92, 20);
+            this.linkLabel1.TabIndex = 8;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Home page";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // LogIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.textPassword);
             this.Controls.Add(this.textUserName);
             this.Controls.Add(this.label2);
@@ -101,7 +114,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
             this.Name = "LogIn";
-            this.Text = "LogIn";
+            this.Text = "Platform Game";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -116,5 +129,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textUserName;
         private System.Windows.Forms.TextBox textPassword;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }

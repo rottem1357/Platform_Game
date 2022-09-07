@@ -17,7 +17,6 @@ namespace Platform_Game
             Users.DownloadUsers();
             InitializeComponent();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             Form1 form;
@@ -37,6 +36,10 @@ namespace Platform_Game
             form = new Form1(id);
             form.ShowDialog();
                 
+        }
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
